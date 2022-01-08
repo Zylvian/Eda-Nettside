@@ -173,22 +173,41 @@ iframe:nth-child(2){
 }
 
 /* Style the links inside the navigation bar */
-.navbar a {
+/*.navbar a {
   float: right;
   display: block;
   text-align: center;
   padding: 7px 10px;
   text-decoration: none;
   font-size: 13px;
+}*/
+
+
+.navbar a {
+    display: block;
+    text-align: center;
+    padding: 7px 10px;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: "Lucida Console", Courier, monospace;
+    color: blue;
+    text-decoration-color: aqua;
+    color:azure;
+    white-space: nowrap;
 }
-    
-    .mailman{
-        font-family: "Lucida Console", Courier, monospace;
-        color: blue;
-        text-decoration-color: aqua;
-        color:azure;
-        white-space: nowrap;
-    }
+
+.navbar .mailman {
+  float: right;
+}
+
+.navbar .middleman{
+    text-align-last: center;
+}
+
+.navbar .notmail {
+  float: left;
+    font-weight: bold;
+}
 
 /* Change the color of links on hover */
 /*.navbar a:hover {
