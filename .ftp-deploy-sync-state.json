@@ -1,0 +1,177 @@
+{
+    "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
+    "version": "1.0.0",
+    "generatedTime": 1641603347223,
+    "data": [
+        {
+            "type": "folder",
+            "name": "kleda"
+        },
+        {
+            "type": "folder",
+            "name": "www"
+        },
+        {
+            "type": "file",
+            "name": "kleda/chris hypeface tekst.jpg",
+            "size": 121497,
+            "hash": "d78cbfa91624df4f788a005ca1d85b9336b97a3ec2ff73716fe746dec7ad7ada"
+        },
+        {
+            "type": "file",
+            "name": "kleda/index.html",
+            "size": 198,
+            "hash": "8e8055e0213acb8c3402098ad2e0c60f609c82dae1ad1f7edd9aad5a5e524a95"
+        },
+        {
+            "type": "file",
+            "name": "kleda/kledacss.css",
+            "size": 222,
+            "hash": "f25ccb2d4d8296c096c4424f6f77e588b1854f6b87302ad49adc1cc8ea6c2169"
+        },
+        {
+            "type": "file",
+            "name": "www/EDA STØRRE.png",
+            "size": 261083,
+            "hash": "e1a2825724a0be0abd9c7dbf1c573db60f50bb8b0a5e49a885dc05c509e5be1b"
+        },
+        {
+            "type": "file",
+            "name": "www/EDA STØRRE2.png",
+            "size": 43850,
+            "hash": "309e76ee3e730d9bfcbcd79a24711dcd650f4f75c74f5b6a17bb1e753ce97023"
+        },
+        {
+            "type": "file",
+            "name": "www/Eda wall.jpg",
+            "size": 1026401,
+            "hash": "70156d5e59137961965968d67edf2aaad28d95170e9f3ee5ccf31eec0185f1c1"
+        },
+        {
+            "type": "file",
+            "name": "www/EdaWebCSS.rar",
+            "size": 23485109,
+            "hash": "a74573617aa42c5f27cfe5579bee370a5aaa06baf4fd64a2d8d63ccaa101f752"
+        },
+        {
+            "type": "file",
+            "name": "www/README.md",
+            "size": 48,
+            "hash": "9988e3f709b2e432077ff187e3fb9714b2e198de62e091a0a7b27e72c776621a"
+        },
+        {
+            "type": "file",
+            "name": "www/eda dra wide af.png",
+            "size": 7278589,
+            "hash": "6faaf75cff5693c0c0a5bf8f92bb66f764e17cf46405c1636b9ea6e39f0de382"
+        },
+        {
+            "type": "file",
+            "name": "www/eda pressefoto 2 cropped.png",
+            "size": 7404308,
+            "hash": "c307567d93f549b1dbd6755bf1d76893d89fc8839f33c2c2468e1237de4188f7"
+        },
+        {
+            "type": "file",
+            "name": "www/eda pressefoto 3.png",
+            "size": 7786925,
+            "hash": "ad90e05ed5e5889bc25f4fdd94d99651d0a5cde42c2edc9ee6508b847b9081c9"
+        },
+        {
+            "type": "file",
+            "name": "www/eda pressefoto.jpg",
+            "size": 161285,
+            "hash": "2c28930b460b96ea4482acf76b6de3244f5a4f3586131d80b0b8d6f0960157c8"
+        },
+        {
+            "type": "file",
+            "name": "www/edu min homie ute nå.png",
+            "size": 26230982,
+            "hash": "a451e7aa91628db3a54f10eb6e5fcf27ee47ccb71109548b34b6cbb5ca58a3ea"
+        },
+        {
+            "type": "file",
+            "name": "www/favicon.ico",
+            "size": 1150,
+            "hash": "01f9f90ed4d55f6000cc200f538b165814dcd30b29b5cc70e2cbeac5f2655e1a"
+        },
+        {
+            "type": "file",
+            "name": "www/fb_logo.svg",
+            "size": 358,
+            "hash": "0225596ff7a58f75d7558ca613ff56066f16117276fafa669e207672e6448abb"
+        },
+        {
+            "type": "file",
+            "name": "www/index.html",
+            "size": 1881,
+            "hash": "d6ebbef77035b019ed45dcbcd5afe72aaa5307510cc49ffc7829ac082928ffbb"
+        },
+        {
+            "type": "file",
+            "name": "www/instagram.png",
+            "size": 496757,
+            "hash": "f66028ffd5d940a8ea9363999e60062461809e100730b962f5cee210b8576d51"
+        },
+        {
+            "type": "file",
+            "name": "www/jarle glassees man.jpg",
+            "size": 41019,
+            "hash": "2188d88ea1eccf3efed668d2794284e695e588889e6af4e74d3a1931bdc64185"
+        },
+        {
+            "type": "file",
+            "name": "www/ligge drawing.png",
+            "size": 8306182,
+            "hash": "9b3c300e6a23c6ae6eef9a409c2506d2757740881304bb7dca574c7bd46149be"
+        },
+        {
+            "type": "file",
+            "name": "www/ligge endorfin ute 2.png",
+            "size": 15785640,
+            "hash": "46c48244c2c5f11b8d4c24b25518df9d288c694be7f2415adcabb2401f7e323a"
+        },
+        {
+            "type": "file",
+            "name": "www/ligge endorfin ute.png",
+            "size": 5193227,
+            "hash": "53e708a07f83683784055ddcac30db9bec6638bba95f24afd423f56c2de247b7"
+        },
+        {
+            "type": "file",
+            "name": "www/ligge tegnet huge.png",
+            "size": 15367285,
+            "hash": "1e4322e9fcdd72e4314fd7e8e7831ee917724545cefedc570a64f0b9de31fd74"
+        },
+        {
+            "type": "file",
+            "name": "www/oldindex.html",
+            "size": 1246,
+            "hash": "cbfc896c07ed8f9ed9203ab11e2692cb5915f4c7e658e69fd2cc7ce1cbf51503"
+        },
+        {
+            "type": "file",
+            "name": "www/sapap.html",
+            "size": 125,
+            "hash": "0c8402ee78b1beb95a7454ee1bba30f616f4a8f6876c04e11ad2f2227869a783"
+        },
+        {
+            "type": "file",
+            "name": "www/style.css",
+            "size": 5387,
+            "hash": "ef9df17312147476b632a2e81b5ae5c2a13c553d5de0e2be140be47dfd8465f0"
+        },
+        {
+            "type": "file",
+            "name": "www/testhtml.html",
+            "size": 3644,
+            "hash": "d7e4b6766c5b556739ea090a9364065a00f34e392dea3fa07d844e2aa4cb35a4"
+        },
+        {
+            "type": "file",
+            "name": "www/youtubemen.png",
+            "size": 24723,
+            "hash": "92063291744fbf598c0c39e7e42aaa9664e5155afd729020f788aac714c2b717"
+        }
+    ]
+}

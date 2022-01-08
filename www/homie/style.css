@@ -1,0 +1,75 @@
+body {
+    background-image: url("media/Edu_Min_Homie_artwork_4_rett_fra_AE_smol.jpg");
+    background-position:unset;
+    background-repeat: no-repeat;
+    
+}
+
+h1 {
+    color: forestgreen;
+    text-shadow: -2px -2px #1C3D11;
+    text-align: center;
+    /*font-family: 'Courier New', Courier, monospace;*/
+    font-family: Verdana, sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.h1__hr{
+    width: 300px;
+    margin: 0 auto 40px auto;
+    border: solid 0,5px white;
+    background-color: white;
+    opacity: 1;
+    display: block;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 40px auto 0 auto;
+    
+}
+
+.container div{
+    margin: 20px 0;
+    display: block;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.spotman {
+    width: 340px;
+    height: 340px;
+    border: 5px double green;
+    border-color: forestgreen;
+}
+
+.borderme {
+    border: 5px double darkgreen;
+    border-color: forestgreen;
+    height: 400px;
+    width: 800px;
+    margin: 0 auto;
+    display: block;
+}
+
+@media only screen and (max-width: 600px) {
+    .borderme {
+        height: 320px;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .spotman {
+        height: 260px;
+        width: 250px;
+        margin: 0 60px;
+    }
+    h1 {
+        font-size: 32px;
+    }
+    .h1__hr {
+        max-width: 250px;
+    }
+  }

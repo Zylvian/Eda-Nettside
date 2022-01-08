@@ -1,0 +1,221 @@
+html {
+    font-family: cursive;
+}
+
+body{
+background: url(" ");
+font-size: 1.1em;
+    line-height: normal;
+    margin: 0px;
+}
+
+a.btn{
+    text-decoration: none;
+}
+
+div{
+    border-radius: 0px;
+}
+h1,h2,h3,h4{
+    margin-bottom:15px;
+    color: black;
+}
+
+h1, .logo{
+    font-family:cursive;
+    font-size: 2.8em;
+    
+}
+
+
+#header {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    background: url("../images/wedding.jpg ");
+    background-size: cover;
+    color: #000000;
+    text-align: right;
+    min-height: 600px;
+    max-width: 100%;
+    padding:0px;
+
+}
+
+    #header2 {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    background: url("../images/decoration.jpg ");
+    background-size: cover;
+    color: #000000;
+    text-align: right;
+    min-height: 400px;
+    max-width: 100%;
+    padding:0px;
+    
+}
+
+#header3 {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    background: url("../images/fountain2.jpg ");
+    background-size: cover;
+    color: #000000;
+    text-align: right;
+    min-height: 400px;
+    max-width: 100%;
+    padding:0px;
+    
+}
+
+
+#header span{
+    width: 100%;
+}
+#header h1{
+    color: #960000;
+    font-size: 30pt;
+}
+
+.intropage{
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    color: #FFFFFF;
+    padding: 30px;
+    text-align: center;
+    min-height: 400px;
+    
+}
+.intropage h1{
+    
+    color: #FFFFFF;
+
+    
+}
+
+.container{
+       max-width: 1024px;
+    margin: auto;
+    margin-top: 0px;
+    background: #ffffff;
+    z-index: 999;
+    position: relative;
+    padding-left: 10px;
+    
+}
+
+.content1 {
+
+    text-align: center;
+    font-family: cursive;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 35px;
+    box-shadow: 5px 5px 10px 3px #3a3836;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+}
+
+.content2 {
+
+    text-align: center;
+    font-family: cursive;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 35px;
+    box-shadow: 5px 5px 10px 3px #3a3836;
+    min-height: 400px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+
+li {
+
+    list-style: none;
+}
+
+.padd {
+
+    padding: 15px;
+
+}
+
+
+.menu ul {
+             list-style-type: none;
+    margin: 0;
+    text-align: center;
+    position: fixed;
+    margin-top:-10px;
+    margin-left: 15px;
+    width: 100%;
+    z-index: 0;}
+
+.menu li {
+
+    background-color: rgba(255, 255, 255, 0.74);
+    display: inline-block;
+    text-align: center;
+    padding:20px;
+}
+
+.menu a{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    background-color: rgba(190, 0, 111, 0);
+    font-size: 2.2em;
+    font-family: cursive;
+
+}
+
+.menu li:hover {
+    background: #FFFFFF;
+}
+
+.logo{
+    max-width: 400px;
+    padding: 15px;
+    display:none;
+}
+
+.aside {
+    background-color: #be006f;
+    padding: 15px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.aside h3{
+color: #ffffff;
+}
+#footer {
+    background-color: #3a3836;
+    color: #ffffff;
+    text-align: center;
+    font-size: 16px;
+    padding: 15px;
+}
+
+.right{
+    float: right;
+}
+
+
+@media only screen and (max-width: 600px) {
+.logo{width:100%;}
+.menu ul {font-size: small;}
+
+}
