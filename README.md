@@ -1,8 +1,41 @@
 # Eda Nettside
  Nettside for musikkgruppen Eda.
+ 
+ *Hostet hos [domeneshop](https://domene.shop/).*
 
 
-## Laga av desse to kjekke karane her:
+### Tutorial: Hvordan oppdatere nettsiden på webhotellet automatisk.
+**Før du starter:**
+
+    - Sørg for at Git koden din er strukturert riktig. Er det en www mappe i master folderen?
+    - Er de andre nettsidene under www mappen? (www/søknad)
+1. Finn fram til Git repoet ditt, e.g https://github.com/Zylvian/Eda-Nettside.
+2. Gå til 'Settings' -> 'Secrets', og legg inn FTP passordet ditt som "FTP_PASSWORD".
+3. Gå til 'Actions' -> 'New Workflow'.
+4. Lim inn denne koden, og bytt ut "username" med passordet du ble tilsendt av domeneshop:
+```
+on: push
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.2.0
+      with:
+        server: ftp.domeneshop.no
+        username: BRUKERNAVN
+        password: ${{ secrets.FTP_PASSWORD }}
+    ```
+    *(Dokumentasjon: https://github.com/marketplace/actions/ftp-deploy)*
+
+5. Nettsiden din skal nå oppdatere seg hver gang du pusher ny kode til Git! 
+
+## Skapere:
 
 ![Mac and cheese te beste pris](/www/mac_cheese.webp?raw=true "Mac and cheese te beste pris")
 
