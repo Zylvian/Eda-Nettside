@@ -1,6 +1,8 @@
 # Eda Nettside
  Nettside for musikkgruppen Eda.
  
+ ### [https://edamusic.no/](https://edamusic.no/)
+ 
  *Hostet hos [domeneshop](https://domene.shop/).*
 
 
@@ -34,13 +36,17 @@ jobs:
     *(Dokumentasjon: https://github.com/marketplace/actions/ftp-deploy)*
 
 5. Nettsiden din skal nå oppdatere seg hver gang du pusher ny kode til Git! 
+```
 
-## Skapere:
+---
+
+## Laget av:
 
 ![Mac and cheese te beste pris](/www/mac_cheese.webp?raw=true "Mac and cheese te beste pris")
 
-### Mac
+### Mac - [@GMRMac](https://github.com/GMRMac)
 
-![Dilettant e på g e det mulig](/www/jarleglasses.jpg?raw=true "Dilettant e på g e det mulig")
+<!-- ![Dilettant e på g e det mulig](/www/jarleglasses.jpg?raw=true?width=250 "Dilettant e på g e det mulig")` -->
+<img src="/www/jarleglasses.jpg" alt="drawing" width="250"/>
 
-### Dilettant
+### Dilettant - [@Zylvian](https://github.com/Zylvian) 
