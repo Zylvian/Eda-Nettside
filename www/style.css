@@ -100,6 +100,23 @@ a:hover{
     line-height: 1.4rem;
 }
 
+.imagecontainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .imageman{
+        object-fit: cover;
+        height: auto;
+        max-width: 100%;
+    }
+}
+
+.artistinfo{
+    text-align: center;
+    line-height: 1.4rem;
+}
+
 .spotifyplayer{
     .spotifyiframe{
         display: block;
@@ -126,27 +143,6 @@ a:hover{
 
 }
 
-
-
-
-.imagecontainer{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .imageman{
-        object-fit: cover;
-        max-height: 100%;
-        max-width: 100%;
-    }
-}
-
-.artistinfo{
-    text-align: center;
-    line-height: 1.4rem;
-}
-
-
 .undermen{
     display: flex;
     justify-content: space-between;
@@ -160,6 +156,9 @@ a:hover{
         flex-basis: 100%;
         height: 100%;
         align-items: center;
+
+
+        max-width: 100%;
     }
 
     img{
