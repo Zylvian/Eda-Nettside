@@ -44,11 +44,11 @@ jobs:
 
 ## Laget av:
 
-![Mac and cheese te beste pris](/www/mac_cheese.webp?raw=true "Mac and cheese te beste pris")
+![Mac and cheese te beste pris](/www/readme_images/mac_cheese.webp?raw=true "Mac and cheese te beste pris")
 
 ### Mac - [@GMRMac](https://github.com/GMRMac)
 
 <!-- ![Dilettant e på g e det mulig](/www/jarleglasses.jpg?raw=true?width=250 "Dilettant e på g e det mulig")` -->
-<img src="/www/jarleglasses.jpg" alt="drawing" width="250"/>
+<img src="/www/readme_images/jarleglasses.jpg" alt="drawing" width="250"/>
 
 ### Dilettant - [@Zylvian](https://github.com/Zylvian) 
