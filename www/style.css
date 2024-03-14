@@ -120,6 +120,10 @@ a:hover{
         font-size: 0.8rem;
         letter-spacing: -1px;
     }
+
+    .artistinfo__info{
+        text-align: left;
+    }
 }
 
 .spotifyplayer{
