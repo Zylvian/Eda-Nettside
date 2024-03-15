@@ -1,8 +1,10 @@
 
+/*@import 'noisemap.css';*/
+
 :root{
     --background-color: #0F2027;
+    /*--background-color: #041621;*/
 }
-
 
 body {
     width: 100vw;
@@ -12,6 +14,8 @@ body {
     overflow-x: hidden;
     margin: 0;
 }
+
+
 
 /* Text info */
 body *{
@@ -126,6 +130,13 @@ a:hover{
     }
 }
 
+.dile{
+    text-decoration: underline yellow 1px;
+}
+.olab{
+    text-decoration: underline purple 1px;
+}
+
 .spotifyplayer{
     .spotifyiframe{
         display: block;
@@ -230,6 +241,8 @@ a:hover{
     }
 }
 
+
+/* Team page styling */
 .teammember{
     display: flex;
     flex-direction: column;
