@@ -22,7 +22,9 @@ body *{
     text-decoration: none;
     font-family: "Lucida Console", Courier, monospace;
     text-decoration-color: aqua;
-    color:azure;
+    color:azure;   
+}
+body > * {
     margin: 0 auto;
 }
 
