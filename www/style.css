@@ -248,6 +248,43 @@ a:hover{
     }
 }
 
+.translations__title{
+    text-decoration: underline rgba(255, 255, 255, 0.5);
+    margin-bottom: 8px;
+}
+.translations{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 4rem;
+
+    .translations__container{
+        padding: 3rem;
+        border: purple solid 2px;
+        outline: yellow solid 1px;
+
+        border-radius: 5px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        text-align: center;
+        font-size: 1rem;
+
+
+        > a:hover{
+            scale: 120%;
+        }
+        
+        > a{
+            padding: 1rem;
+            box-shadow: 1px 1px 1px black;
+        }
+    }
+}
+
 
 /* Team page styling */
 .teammember{
