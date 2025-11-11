@@ -158,7 +158,7 @@ a:hover{
 }
 
 .youtubeplayer{
-    .youtubeiframe{
+    iframe{
         display: block;
         margin: 0 auto;
         width: 80%;
@@ -167,7 +167,6 @@ a:hover{
             width: 100%;
         }
     }
-
 }
 
 .undermen{
