@@ -107,8 +107,9 @@ button.mini:hover { color: var(--yellow); border-color: var(--yellow); }
 .facts { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
 .facts b { color: var(--yellow); font-weight: bold; }
 .runner { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
-.lyrics { display: flex; justify-content: flex-end; margin-top: -0.9rem; }
-.lyrics a { font-size: 0.75rem; padding: 0.3rem 0.65rem; border: 1px solid rgba(240, 255, 255, 0.3); border-radius: 4px; color: var(--muted); text-decoration: none; }
+.panel-foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.6rem 0.75rem; }
+.lyrics { display: flex; margin-left: auto; }
+.lyrics a { font-size: 0.75rem; padding: 0.3rem 0.65rem; border: 1px solid rgba(240, 255, 255, 0.4); border-radius: 4px; color: var(--fg); text-decoration: none; }
 .lyrics a:hover { color: var(--yellow); border-color: var(--yellow); }
 .runner a { color: var(--fg); text-decoration: underline; text-decoration-color: var(--aqua); text-underline-offset: 3px; }
 .runner a:hover { color: var(--hot); }
@@ -122,10 +123,9 @@ details summary:hover { color: var(--yellow); }
 @media (max-width: 480px) {
   .wrap { padding-block: 1.25rem 2rem; gap: 1rem; }
   .view { gap: 1rem; }
-  #result > .panel, #rLyrics { order: 1; }
+  #result > .panel { order: 1; }
   #rTrailBox { order: 2; }
   #again { order: 3; }
-  .lyrics { margin-top: -0.5rem; }
 }
 @media (prefers-reduced-motion: reduce) { .view { animation: none; } button, .btn { transition: none; } }
 </style>
@@ -176,9 +176,11 @@ details summary:hover { color: var(--yellow); }
     <a class="btn primary" id="rSpotify" href="#" target="_blank" rel="noopener">Hør på Spotify</a>
     <div class="panel">
       <div class="meters" id="rMeters"></div>
-      <div class="facts" id="rFacts"></div>
+      <div class="panel-foot">
+        <div class="facts" id="rFacts"></div>
+        <div class="lyrics" id="rLyrics"></div>
+      </div>
     </div>
-    <div class="lyrics" id="rLyrics"></div>
     <div class="runner" id="rRunner"></div>
     <details id="rTrailBox">
       <summary>Dine svar</summary>
