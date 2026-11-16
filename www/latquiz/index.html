@@ -82,11 +82,12 @@ button:focus-visible, .btn:focus-visible, a:focus-visible { outline: 3px solid v
 .primary:hover { background: var(--fg); border-color: var(--fg); color: var(--bg); }
 .ghost { border-color: transparent; text-align: center; color: var(--muted); padding: 0.6rem; }
 .ghost:hover { border-color: transparent; color: var(--hot); }
-.panel-row { flex-direction: row; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 0.75rem; }
+.start-group { display: flex; flex-direction: column; gap: 0.6rem; }
+.under-start { display: flex; justify-content: flex-end; }
 button.mini {
-  width: auto; display: inline-block; flex: none; margin-left: auto;
+  width: auto; display: inline-block; flex: none;
   font-size: 0.75rem; padding: 0.3rem 0.65rem; border-width: 1px; border-radius: 4px;
-  text-align: center; color: var(--fg); border-color: rgba(240, 255, 255, 0.6);
+  text-align: center; color: var(--muted); border-color: rgba(240, 255, 255, 0.3);
 }
 button.mini:hover { color: var(--yellow); border-color: var(--yellow); }
 .key { color: var(--yellow); font-weight: bold; margin-right: 0.6rem; }
@@ -130,11 +131,15 @@ details summary:hover { color: var(--yellow); }
   <section class="view" id="start">
     <h1>Hvilken E.D.A-låt er du i dag?</h1>
     <p class="lead">Svar på noen kjappe spørsmål om dagen din, så finner vi låten som passer. Det tar under ett minutt.</p>
-    <div class="panel panel-row">
+    <div class="panel">
       <p class="small">18 låter · 5–8 spørsmål</p>
-      <button class="mini" id="random" type="button">tilfeldig låt</button>
     </div>
-    <button class="primary" id="go" type="button">Start</button>
+    <div class="start-group">
+      <button class="primary" id="go" type="button">Start</button>
+      <div class="under-start">
+        <button class="mini" id="random" type="button">tilfeldig låt</button>
+      </div>
+    </div>
   </section>
 
   <section class="view" id="quiz" hidden>
