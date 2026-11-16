@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Hvilken E.D.A-låt er du?</title>
+    <meta name="description" content="Svar på noen kjappe spørsmål, så finner vi E.D.A-låten som passer dagen din.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Hvilken E.D.A-låt er du?">
+    <meta property="og:description" content="Svar på noen kjappe spørsmål, så finner vi E.D.A-låten som passer dagen din.">
+    <meta property="og:image" content="https://www.edamusic.no/Eda-Two-Fingers.jpg">
+    <link href="../logos/eda_icon.png" rel="icon" type="image/x-icon">
+<style>
+[hidden] { display: none !important; }
+body { margin: 0; }
+/* Layout: one narrow column like edamusic.no, one screen per step, yellow rule as the recurring mark. */
+:root {
+  --bg: #0F2027;          /* edamusic.no background */
+  --bg-deep: #081419;
+  --fg: #F0FFFF;          /* azure, the site's text colour */
+  --muted: #9FB8BD;
+  --yellow: #ECE100;      /* the site's divide line */
+  --purple: rgba(87, 0, 155, 0.6); /* the site's link bar */
+  --purple-solid: #3A1366;
+  --aqua: #00FFFF;
+  --hot: #FF3B3B;         /* the site's link hover */
+  --mono: "Lucida Console", "Courier New", Courier, monospace;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--mono);
+  font-size: 16px;
+  line-height: 1.5;
+}
+.wrap {
+  min-height: 100%;
+  box-sizing: border-box;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding-block: 2.5rem 3rem;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.logo { color: var(--fg); text-decoration: none; font-weight: bold; font-size: 1.6rem; letter-spacing: 0.08em; }
+.tag {
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--bg); background: var(--yellow); padding: 0.15rem 0.45rem; border-radius: 3px;
+}
+.player { width: 100%; height: 152px; border: 0; border-radius: 12px; display: block; }
+.logo:hover { color: var(--hot); }
+.rule { border: 0; border-bottom: 2px solid var(--yellow); border-radius: 5rem; margin: 0; }
+h1, h2 { margin: 0; text-wrap: balance; font-weight: bold; }
+h1 { font-size: clamp(1.7rem, 6vw, 2.4rem); line-height: 1.15; }
+h2 { font-size: clamp(1.35rem, 5vw, 1.8rem); line-height: 1.25; }
+p { margin: 0; }
+.lead { color: var(--muted); max-width: 60ch; }
+.panel {
+  background: var(--purple);
+  border-radius: 6px;
+  padding: 1.1rem 1rem;
+  display: flex; flex-direction: column; gap: 0.6rem;
+}
+.answers { display: grid; gap: 0.75rem; }
+button, .btn {
+  font-family: var(--mono); font-size: 1rem; color: var(--fg);
+  background: transparent; border: 2px solid var(--fg); border-radius: 6px;
+  padding: 0.95rem 1rem; text-align: left; cursor: pointer;
+  display: block; width: 100%; box-sizing: border-box; text-decoration: none;
+  transition: border-color 120ms, color 120ms, background 120ms, transform 120ms;
+}
+button:hover, .btn:hover { border-color: var(--yellow); color: var(--yellow); }
+button:active { transform: translateY(1px); }
+button:focus-visible, .btn:focus-visible, a:focus-visible { outline: 3px solid var(--aqua); outline-offset: 3px; }
+.primary { background: var(--yellow); color: var(--bg); border-color: var(--yellow); font-weight: bold; text-align: center; }
+.primary:hover { background: var(--fg); border-color: var(--fg); color: var(--bg); }
+.ghost { border-color: transparent; text-align: center; color: var(--muted); padding: 0.6rem; }
+.ghost:hover { border-color: transparent; color: var(--hot); }
+.key { color: var(--yellow); font-weight: bold; margin-right: 0.6rem; }
+.progress { display: flex; gap: 6px; }
+.progress span { flex: 1; height: 4px; border-radius: 4px; background: rgba(240, 255, 255, 0.15); }
+.progress span.on { background: var(--yellow); }
+.small { font-size: 0.8rem; color: var(--muted); }
+.count { font-variant-numeric: tabular-nums; }
+.result-title { font-size: clamp(2rem, 9vw, 3.2rem); line-height: 1.05; color: var(--yellow); }
+.feat { color: var(--muted); }
+.why { font-size: 1.05rem; }
+.meters { display: grid; gap: 0.7rem; }
+.meter { display: grid; grid-template-columns: 7.5rem 1fr; align-items: center; gap: 0.75rem; font-size: 0.85rem; }
+.meter .bar { height: 10px; border-radius: 10px; background: rgba(240, 255, 255, 0.12); position: relative; overflow: hidden; }
+.meter .bar i { position: absolute; inset: 0 auto 0 0; background: var(--aqua); border-radius: 10px; }
+.meter .ends { grid-column: 2; display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--muted); margin-top: -0.4rem; }
+.facts { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+.facts b { color: var(--yellow); font-weight: bold; }
+.runner { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
+.runner a { color: var(--fg); text-decoration: underline; text-decoration-color: var(--aqua); text-underline-offset: 3px; }
+.runner a:hover { color: var(--hot); }
+.trail { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.8rem; color: var(--muted); }
+.trail b { color: var(--fg); font-weight: normal; }
+details summary { cursor: pointer; color: var(--muted); font-size: 0.85rem; }
+details summary:hover { color: var(--yellow); }
+.view { display: flex; flex-direction: column; gap: 1.5rem; animation: rise 220ms ease-out; }
+@keyframes rise { from { transform: translateY(6px); opacity: 0.4; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .view { animation: none; } button, .btn { transition: none; } }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <div class="top">
+    <a class="logo" href="../">E.D.A</a>
+    <a class="small" href="../" style="color: var(--muted)">← edamusic.no</a>
+  </div>
+  <hr class="rule">
+
+  <section class="view" id="start">
+    <h1>Hvilken E.D.A-låt er du i dag?</h1>
+    <p class="lead">Svar på noen kjappe spørsmål om dagen din, så finner vi låten som passer. Det tar under ett minutt.</p>
+    <div class="panel">
+      <p class="small">18 låter · 5–8 spørsmål · tekstene og lyden er analysert låt for låt</p>
+    </div>
+    <button class="primary" id="go" type="button">Start</button>
+  </section>
+
+  <section class="view" id="quiz" hidden>
+    <div class="progress" id="progress" aria-hidden="true"></div>
+    <p class="small count" id="qcount"></p>
+    <h2 id="qtext"></h2>
+    <div class="answers">
+      <button type="button" id="ansA"><span class="key">A</span><span></span></button>
+      <button type="button" id="ansB"><span class="key">B</span><span></span></button>
+    </div>
+    <button type="button" class="ghost" id="restart1">Start på nytt</button>
+  </section>
+
+  <section class="view" id="result" hidden>
+    <p class="small">Låten din i dag er</p>
+    <div>
+      <h1 class="result-title" id="rTitle"></h1>
+      <p class="feat" id="rFeat"></p>
+    </div>
+    <p class="why" id="rWhy"></p>
+    <iframe class="player" id="rPlayer" title="Spotify-spiller" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    <a class="btn primary" id="rSpotify" href="#" target="_blank" rel="noopener">Hør på Spotify</a>
+    <div class="panel">
+      <div class="meters" id="rMeters"></div>
+      <div class="facts" id="rFacts"></div>
+    </div>
+    <div class="runner" id="rRunner"></div>
+    <details id="rTrailBox">
+      <summary>Dine svar</summary>
+      <div class="trail" id="rTrail"></div>
+    </details>
+    <button type="button" class="primary" id="again">Ta quizen igjen</button>
+  </section>
+</div>
+
+<script id="quiz-data" type="application/json">{"songs":[{"id":"velkommen-til-klubben","title":"Velkommen Til Klubben","feat":"Conan O'Brien","why":"Du vil ut på gulvet og gi alt. Dette er festlåten for deg som danser til folk tror du er gal.","themes":["klubb","dans","fest","scene","humor"],"v":{"mood":0.9,"energy":0.66,"social":0.9,"party":1.0,"love":0.1,"humor":0.8,"swagger":0.7,"aggressive":0.095,"acoustic":0.08},"bpm":110,"tags":["dans","klubb","tull-og-tøys"],"spotify":"4gGvqsoPLcKuIIBX0bnSnV"},{"id":"endorfin","title":"Endorfin","feat":null,"why":"Du er klar for en ny dag og har energi til overs. Du vil ha noe som kicker i gang endorfinene.","themes":["ny dag","energi","dans","venner","legge vekk sorgen"],"v":{"mood":0.9,"energy":0.57,"social":0.7,"party":0.7,"love":0.2,"humor":0.4,"swagger":0.6,"aggressive":0.044,"acoustic":0.114},"bpm":115,"tags":["dans","klubb","ny-dag"],"spotify":"1OGpWdBV5LoPUvnogfFznO"},{"id":"leike-ikkje","title":"Leike Ikkje","feat":"Polarbjørnen","why":"Du har noe å bevise. Dette er ikke lek for deg, og du vil ha en låt som viser det.","themes":["ambisjon","selvtillit","konkurranse","hjemsted"],"v":{"mood":0.55,"energy":0.38,"social":0.5,"party":0.3,"love":0.0,"humor":0.4,"swagger":1.0,"aggressive":0.078,"acoustic":0.067},"bpm":80,"tags":["battle","flex"],"spotify":"2k66tuUr6Y45QTSkDYwHXv"},{"id":"en-flaske-fanta","title":"En Flaske Fanta","feat":null,"why":"Dagen har gått litt skeis, men du tar det med humor. Noen ganger er en Fanta alt som skal til.","themes":["hverdagskaos","trøst","chill","humor"],"v":{"mood":0.85,"energy":0.47,"social":0.2,"party":0.2,"love":0.0,"humor":1.0,"swagger":0.3,"aggressive":0.07,"acoustic":0.064},"bpm":140,"tags":["fanta","hverdagskaos","tull-og-tøys"],"spotify":"03VMlZyAeRiJt49gKKtI7i"},{"id":"eg-gar-solo","title":"Eg Går Solo","feat":null,"why":"Du kjører ditt eget løp i dag og trenger ingen andre på laget.","themes":["selvstendighet","egen vei","mål"],"v":{"mood":0.7,"energy":0.58,"social":0.1,"party":0.3,"love":0.0,"humor":0.6,"swagger":0.9,"aggressive":0.071,"acoustic":0.066},"bpm":115,"tags":["dans","flex","solo"],"spotify":"3xfylkqNtuyu8NnhGo0kqh"},{"id":"mot-deg","title":"Mot Deg","feat":"Dilettant","why":"Du tenker på én person, og alle andre blir sammenlignet med dem.","themes":["forelskelse","lengsel","den rette"],"v":{"mood":0.45,"energy":0.48,"social":0.2,"party":0.1,"love":1.0,"humor":0.0,"swagger":0.1,"aggressive":0.085,"acoustic":0.138},"bpm":118,"tags":["lengsel"],"spotify":"2IbdXPuI1coZAGCU7vUUee"},{"id":"mat","title":"Mat","feat":null,"why":"Du ligger lavt, lener deg tilbake og vet at du har det. Dette er så mat.","themes":["flex","gutta","chill selvtillit"],"v":{"mood":0.75,"energy":0.62,"social":0.7,"party":0.6,"love":0.2,"humor":0.5,"swagger":1.0,"aggressive":0.127,"acoustic":0.048},"bpm":123,"tags":["dans","flex","klubb"],"spotify":"0ApwEfvU6cUm0f8GswRxJG"},{"id":"himalaya","title":"Himalaya","feat":"Dilettant, Ola B, Polarbjørnen","why":"Du er på vei opp og gir deg ikke før du når toppen.","themes":["nå toppen","kamp","motivasjon","ny start"],"v":{"mood":0.7,"energy":0.6,"social":0.5,"party":0.3,"love":0.4,"humor":0.1,"swagger":0.7,"aggressive":0.397,"acoustic":0.033},"bpm":140,"tags":["toppen"],"spotify":"6x6OuZBSna7jujwdl3sQ8f"},{"id":"edu-min-homie","title":"Edu Min Homie","feat":"Polarbjørnen","why":"Det handler om gjengen din i dag. Kødder noen med homien din, kødder de med deg.","themes":["vennskap","lojalitet","gjengen"],"v":{"mood":0.9,"energy":0.48,"social":1.0,"party":0.7,"love":0.0,"humor":0.6,"swagger":0.5,"aggressive":0.035,"acoustic":0.162},"bpm":130,"tags":["dans","klubb","venner"],"spotify":"0RoYajyRZ1eIUyWiN8yjui"},{"id":"dra","title":"Dra","feat":null,"why":"Du vil bare dra, gjerne sammen med noen, uten å ha det travelt.","themes":["reise","flukt","oss to","eventyr"],"v":{"mood":0.7,"energy":0.18,"social":0.3,"party":0.1,"love":0.8,"humor":0.0,"swagger":0.1,"aggressive":0.005,"acoustic":0.38},"bpm":100,"tags":["flukt","lengsel"],"spotify":"3JufsRLhQJBaexYQhIiqWz"},{"id":"fritt-fall","title":"Fritt Fall","feat":"Dilettant, Ola B","why":"Noe har gått i stykker, og du faller. Du trenger en låt som forstår det.","themes":["brudd","anger","sjalusi","søvnløse netter"],"v":{"mood":0.1,"energy":0.81,"social":0.1,"party":0.0,"love":0.8,"humor":0.0,"swagger":0.0,"aggressive":0.889,"acoustic":0.082},"bpm":89,"tags":["hjertesorg"],"spotify":"7kYjMWo4ZSCclAlahjT964"},{"id":"fyr-opp-en-fanta","title":"Fyr Opp En Fanta","feat":null,"why":"Livet er chill, kvelden er ung og gjengen er samlet. Fyr opp en Fanta!","themes":["nyttår","vinter","god stemning","gjengen"],"v":{"mood":1.0,"energy":0.41,"social":0.9,"party":0.7,"love":0.0,"humor":0.6,"swagger":0.3,"aggressive":0.067,"acoustic":0.179},"bpm":150,"tags":["fanta","ny-dag","venner","vinter"],"spotify":"5rYuJRA4Dg5MpdEv8eJgqu"},{"id":"lilla-vin","title":"Lilla Vin","feat":null,"why":"Mat, vin og en runde til med gjengen. Du er gira på en kveld uten stress.","themes":["vin","gaming","venner","kveld"],"v":{"mood":0.75,"energy":0.57,"social":0.8,"party":0.8,"love":0.2,"humor":0.8,"swagger":0.4,"aggressive":0.074,"acoustic":0.073},"bpm":125,"tags":["dans","gaming","venner"],"spotify":"5UwlTlOCNC2722ROeb4cGd"},{"id":"coop","title":"Coop","feat":null,"why":"Alt er gøyere når dere er to. Dere spiller på samme lag og vinner sammen.","themes":["oss to","gaming","forelskelse","koble av"],"v":{"mood":0.85,"energy":0.58,"social":0.3,"party":0.1,"love":0.9,"humor":0.3,"swagger":0.2,"aggressive":0.048,"acoustic":0.076},"bpm":125,"tags":["dans","flukt","gaming"],"spotify":"4sqlozyCG1mMEZIvXH8xZq"},{"id":"legge-oss-inn","title":"Legge Oss Inn","feat":"Polarbjørnen","why":"Du er klar for full galskap. Noen må nesten legge deg inn.","themes":["galskap","kaos","anarki i klubben"],"v":{"mood":0.6,"energy":0.62,"social":0.8,"party":0.9,"love":0.0,"humor":0.6,"swagger":0.9,"aggressive":0.455,"acoustic":0.03},"bpm":80,"tags":["battle","dans","kaos","klubb"],"spotify":"1oMxN2aHC64giANFfnztsa"},{"id":"im-here","title":"I'm Here","feat":"Tellev, Dilettant","why":"Ting er tunge akkurat nå. Du trenger noen som bare sier: det går bra, jeg er her.","themes":["trøst","støtte","være der for noen"],"v":{"mood":0.35,"energy":0.52,"social":0.3,"party":0.0,"love":0.3,"humor":0.0,"swagger":0.0,"aggressive":0.234,"acoustic":0.09},"bpm":128,"tags":["trost"],"spotify":"5QLBpSLhhao2zJFzTkjBp3"},{"id":"lever-for-deg","title":"Lever For Deg","feat":null,"why":"Du lever for én person, selv om det gjør vondt. Hjertet er som porselen, men du venter likevel.","themes":["kjærlighet","avhengighet","angst","venting","knust hjerte"],"v":{"mood":0.35,"energy":0.5,"social":0.2,"party":0.1,"love":1.0,"humor":0.0,"swagger":0.1,"aggressive":0.03,"acoustic":0.08},"bpm":127,"tags":["hjertesorg","lengsel"],"spotify":"7ETKUpXUuwcpxhQWKMUavH"},{"id":"fallskjerm","title":"Fallskjerm (Akustisk)","feat":"Polarbjørnen, Ola B","why":"En stille, akustisk kveld med tunge tanker. Du savner noen, selv på ti tusen meters avstand.","themes":["brudd","anger","savn","søvnløse netter","akustisk"],"v":{"mood":0.1,"energy":0.18,"social":0.1,"party":0.0,"love":0.8,"humor":0.0,"swagger":0.0,"aggressive":0.058,"acoustic":0.488},"bpm":130,"tags":["hjertesorg","trost"],"spotify":"390IYCHR51WfCWBaXsr09W"}],"questions":[{"id":"energi","text":"Trenger du å få opp energien?","a":{"label":"Ja, skru opp!","dims":{"energy":0.8}},"b":{"label":"Nei, rolig nå","dims":{"energy":0.2}}},{"id":"trist","text":"Er du i trist modus i dag?","a":{"label":"Ja, litt","dims":{"mood":0.15}},"b":{"label":"Nei, livet er chill","dims":{"mood":0.85}}},{"id":"gjengen","text":"Hvem er med deg akkurat nå?","a":{"label":"Hele gjengen","dims":{"social":0.9}},"b":{"label":"Bare meg (eller oss to)","dims":{"social":0.15},"themes":["solo","lengsel"]}},{"id":"forelsket","text":"Er det noen du ikke klarer å slutte å tenke på?","a":{"label":"Ja ...","dims":{"love":0.9}},"b":{"label":"Nei, ingen","dims":{"love":0.05}}},{"id":"ut","text":"Skal du ut i kveld, eller blir du på sofaen?","a":{"label":"Ut!","dims":{"party":0.9}},"b":{"label":"Sofaen","dims":{"party":0.1}}},{"id":"tull","text":"Trenger du noe å le av?","a":{"label":"Ja, gi meg tull","dims":{"humor":0.9}},"b":{"label":"Nei, jeg er seriøs i dag","dims":{"humor":0.1}}},{"id":"bevise","text":"Har du noe å bevise?","a":{"label":"Ja, jeg har noe å vise verden","dims":{"swagger":0.95}},"b":{"label":"Nei, ikke i dag","dims":{"swagger":0.2}}},{"id":"hardt","text":"Vil du ha det hardt eller mykt?","a":{"label":"Hardt","dims":{"aggressive":0.7,"energy":0.75}},"b":{"label":"Mykt","dims":{"aggressive":0.05}}},{"id":"akustisk","text":"Gitar eller synther?","a":{"label":"Gitar","dims":{"acoustic":0.45}},"b":{"label":"Synther","dims":{"acoustic":0.05}}},{"id":"dra","text":"Drømmer du deg bort i dag?","a":{"label":"Ja, langt vekk","themes":["flukt"]},"b":{"label":"Nei, jeg trives der jeg er","themes_not":["flukt"]}},{"id":"fanta","text":"Er det de små tingene som redder dagen?","a":{"label":"Ja, alltid","themes":["fanta"]},"b":{"label":"Nei, det må mer til","themes_not":["fanta"]}},{"id":"skeis","text":"Har dagen gått litt skeis?","a":{"label":"Ja, ingenting går min vei","themes":["hverdagskaos"],"dims":{"humor":0.8}},"b":{"label":"Nei, alt går greit","themes_not":["hverdagskaos"]}},{"id":"nyttaar","text":"Vinter eller sommer i hodet ditt?","a":{"label":"Vinter","themes":["vinter"]},"b":{"label":"Sommer","themes_not":["vinter"]}},{"id":"solo","text":"Gjør du ting på din egen måte i dag?","a":{"label":"Ja, jeg klarer meg selv","themes":["solo"],"dims":{"social":0.1}},"b":{"label":"Nei, vi er et lag","themes_not":["solo"]}},{"id":"hjertesorg","text":"Har noen knust hjertet ditt?","a":{"label":"Ja ...","themes":["hjertesorg"],"dims":{"mood":0.15}},"b":{"label":"Nei, det er helt","themes_not":["hjertesorg"]}},{"id":"trost","text":"Trenger du noen som bare er der for deg?","a":{"label":"Ja, akkurat nå","themes":["trost"]},"b":{"label":"Nei, jeg klarer meg","themes_not":["trost"]}},{"id":"toppen","text":"Hvor høyt sikter du i dag?","a":{"label":"Helt til topps","themes":["toppen"],"dims":{"swagger":0.7}},"b":{"label":"Jeg er fornøyd der jeg er","themes_not":["toppen"]}},{"id":"galskap","text":"Hvor gal skal kvelden bli?","a":{"label":"Helt sinnssyk","themes":["kaos"],"dims":{"energy":0.8}},"b":{"label":"Passe","themes_not":["kaos"]}},{"id":"gaming","text":"Blir det gaming i kveld?","a":{"label":"Ja, kontrolleren er klar","themes":["gaming"]},"b":{"label":"Nei","themes_not":["gaming"]}},{"id":"morgen","text":"Hvordan våknet du i dag?","a":{"label":"Lys våken og klar","themes":["ny-dag"],"dims":{"mood":0.85}},"b":{"label":"Gi meg fem minutter til","themes_not":["ny-dag"]}},{"id":"dans","text":"Har du lyst til å danse?","a":{"label":"Ja, ut på gulvet","themes":["dans"],"dims":{"party":0.8}},"b":{"label":"Nei, jeg nikker med hodet","themes_not":["dans"]}},{"id":"battle","text":"Hva gjør du hvis noen utfordrer deg i dag?","a":{"label":"Da tar jeg den","themes":["battle"],"dims":{"swagger":0.95}},"b":{"label":"Jeg lar det gå","themes_not":["battle"]}},{"id":"flex","text":"Hvordan føler du deg når du ser deg i speilet i dag?","a":{"label":"Ganske fresh, faktisk","themes":["flex"],"dims":{"swagger":0.95}},"b":{"label":"Helt vanlig","themes_not":["flex"]}}]}</script>
+<script>
+(function () {
+  "use strict";
+  var DATA = JSON.parse(document.getElementById("quiz-data").textContent);
+  var DIM_W = 4.0, THEME_BONUS = 1.4, THEME_MISS = 0.5;
+  var MIN_Q = 5, MAX_Q = 8, STOP_P = 0.6;
+
+  var songs = DATA.songs;
+  var ids = songs.map(function (s) { return s.id; });
+  var byId = {}; songs.forEach(function (s) { byId[s.id] = s; });
+  var questions = DATA.questions;
+  var qById = {}; questions.forEach(function (q) { qById[q.id] = q; });
+
+  function answerScore(s, ans) {
+    var sc = 0, d;
+    var dims = ans.dims || {};
+    for (d in dims) sc -= DIM_W * Math.pow(s.v[d] - dims[d], 2);
+    var has = function (list) { return (list || []).some(function (t) { return s.tags.indexOf(t) >= 0; }); };
+    if (ans.themes && ans.themes.length) sc += has(ans.themes) ? THEME_BONUS : -THEME_MISS;
+    if (has(ans.themes_not)) sc -= THEME_BONUS;
+    return sc;
+  }
+  function posterior(logs) {
+    var m = -Infinity, k, z = 0, out = {};
+    for (k in logs) m = Math.max(m, logs[k]);
+    for (k in logs) { out[k] = Math.exp(logs[k] - m); z += out[k]; }
+    for (k in out) out[k] /= z;
+    return out;
+  }
+  function entropy(p) { var h = 0, k; for (k in p) if (p[k] > 0) h -= p[k] * Math.log(p[k]); return h; }
+  function pChooseA(s, q) { return 1 / (1 + Math.exp(-2.5 * (answerScore(s, q.a) - answerScore(s, q.b)))); }
+  function addAnswer(logs, ans) { var out = {}; ids.forEach(function (id) { out[id] = logs[id] + answerScore(byId[id], ans); }); return out; }
+  function bestQuestion(logs, asked) {
+    var post = posterior(logs), best = null, bestH = Infinity;
+    questions.forEach(function (q) {
+      if (asked.indexOf(q.id) >= 0) return;
+      var pa = 0; ids.forEach(function (id) { pa += post[id] * pChooseA(byId[id], q); });
+      var h = 0;
+      if (pa > 1e-6) h += pa * entropy(posterior(addAnswer(logs, q.a)));
+      if (1 - pa > 1e-6) h += (1 - pa) * entropy(posterior(addAnswer(logs, q.b)));
+      if (h < bestH) { bestH = h; best = q.id; }
+    });
+    return best;
+  }
+  function ranked(logs) { var p = posterior(logs); return ids.slice().sort(function (a, b) { return p[b] - p[a]; }).map(function (id) { return { id: id, p: p[id] }; }); }
+
+  // expose the engine for testing outside the browser
+  if (typeof window.__edaQuizTest === "function") { window.__edaQuizTest({ answerScore: answerScore, bestQuestion: bestQuestion, ranked: ranked, addAnswer: addAnswer, pChooseA: pChooseA, posterior: posterior, ids: ids, byId: byId, qById: qById, MIN_Q: MIN_Q, MAX_Q: MAX_Q, STOP_P: STOP_P }); return; }
+
+  // ---------- UI ----------
+  var $ = function (id) { return document.getElementById(id); };
+  var state;
+  function show(view) { ["start", "quiz", "result"].forEach(function (v) { $(v).hidden = v !== view; }); window.scrollTo(0, 0); }
+  function reset() { state = { logs: {}, asked: [], trail: [] }; ids.forEach(function (id) { state.logs[id] = 0; }); }
+
+  function ask() {
+    var qid = bestQuestion(state.logs, state.asked);
+    state.current = qid;
+    var q = qById[qid], n = state.asked.length + 1;
+    $("qtext").textContent = q.text;
+    $("ansA").lastChild.textContent = q.a.label;
+    $("ansB").lastChild.textContent = q.b.label;
+    $("qcount").textContent = "Spørsmål " + n;
+    var bars = "";
+    for (var i = 0; i < MAX_Q; i++) bars += '<span class="' + (i < n ? "on" : "") + '"></span>';
+    $("progress").innerHTML = bars;
+    show("quiz");
+    $("ansA").focus({ preventScroll: true });
+  }
+  function answer(which) {
+    var q = qById[state.current], ans = q[which];
+    state.asked.push(q.id);
+    state.trail.push({ q: q.text, a: ans.label });
+    state.logs = addAnswer(state.logs, ans);
+    var top = ranked(state.logs)[0];
+    if (state.asked.length >= MAX_Q || (state.asked.length >= MIN_Q && top.p >= STOP_P)) finish();
+    else ask();
+  }
+  function finish() {
+    var r = ranked(state.logs);
+    renderResult(r[0].id, r[1].id, state.trail);
+    try { history.replaceState(null, "", "#" + r[0].id); } catch (e) { location.hash = r[0].id; }
+  }
+  function meter(label, value, left, right) {
+    var pct = Math.round(Math.max(0, Math.min(1, value)) * 100);
+    return '<div class="meter"><span>' + label + '</span><div class="bar" role="img" aria-label="' + label + ": " + pct + ' av 100"><i style="width:' + pct + '%"></i></div><div class="ends"><span>' + left + "</span><span>" + right + "</span></div></div>";
+  }
+  function renderResult(id, runnerId, trail) {
+    var s = byId[id];
+    $("rTitle").textContent = s.title;
+    $("rFeat").textContent = s.feat ? "feat. " + s.feat : "E.D.A";
+    $("rWhy").textContent = s.why;
+    $("rSpotify").href = "https://open.spotify.com/track/" + s.spotify;
+    $("rPlayer").src = "https://open.spotify.com/embed/track/" + s.spotify + "?utm_source=generator&theme=0";
+    $("rMeters").innerHTML =
+      meter("Lyd", s.v.energy, "rolig", "full guffe") +
+      meter("Tekst", s.v.mood, "trist", "glad") +
+      meter("Fest", s.v.party, "sofa", "klubb");
+    $("rFacts").innerHTML = "<span><b>" + s.bpm + "</b> BPM</span><span>" + s.themes.slice(0, 3).join(" · ") + "</span>";
+    if (runnerId) {
+      var r = byId[runnerId];
+      $("rRunner").innerHTML = '<span class="small">Nesten like bra:</span><a href="https://open.spotify.com/track/' + r.spotify + '" target="_blank" rel="noopener">' + r.title + "</a>";
+    } else $("rRunner").innerHTML = "";
+    $("rTrailBox").hidden = !trail || !trail.length;
+    $("rTrail").innerHTML = (trail || []).map(function (t) { return "<span>" + t.q + " <b>" + t.a + "</b></span>"; }).join("");
+    show("result");
+  }
+
+  $("go").addEventListener("click", function () { reset(); ask(); });
+  $("ansA").addEventListener("click", function () { answer("a"); });
+  $("ansB").addEventListener("click", function () { answer("b"); });
+  $("again").addEventListener("click", function () { try { history.replaceState(null, "", location.pathname); } catch (e) {} reset(); ask(); });
+  $("restart1").addEventListener("click", function () { reset(); show("start"); });
+
+  // shared link: #<song-id> opens that result directly
+  function fromHash() {
+    var h = (location.hash || "").slice(1);
+    if (byId[h]) {
+      var alt = ranked((function () { var l = {}; ids.forEach(function (id) { l[id] = -Math.pow(byId[id].v.energy - byId[h].v.energy, 2) - Math.pow(byId[id].v.mood - byId[h].v.mood, 2) - (id === h ? 9 : 0); }); return l; })())[0].id;
+      renderResult(h, alt, null);
+    }
+  }
+  window.addEventListener("hashchange", fromHash);
+  reset();
+  fromHash();
+})();
+</script>
+
+</body>
+</html>
