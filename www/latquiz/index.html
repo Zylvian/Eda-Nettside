@@ -116,6 +116,15 @@ details summary { cursor: pointer; color: var(--muted); font-size: 0.85rem; }
 details summary:hover { color: var(--yellow); }
 .view { display: flex; flex-direction: column; gap: 1.5rem; animation: rise 220ms ease-out; }
 @keyframes rise { from { transform: translateY(6px); opacity: 0.4; } to { transform: none; opacity: 1; } }
+/* small phones: keep "Nesten like bra" and the lyrics link on the first screen */
+@media (max-width: 480px) {
+  .wrap { padding-block: 1.25rem 2rem; gap: 1rem; }
+  .view { gap: 1rem; }
+  #result > .panel { order: 1; }
+  #rTrailBox { order: 2; }
+  #again { order: 3; }
+  .lyrics { margin-top: -0.5rem; }
+}
 @media (prefers-reduced-motion: reduce) { .view { animation: none; } button, .btn { transition: none; } }
 </style>
 </head>
