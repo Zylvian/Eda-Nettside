@@ -1,0 +1,8 @@
+{
+  "headers": {
+    "Cache-Control": "public, no-cache"
+  },
+  "globalHeaders": {
+    "Cache-Control": "public, no-cache"
+  }
+}
