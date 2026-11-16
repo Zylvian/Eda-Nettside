@@ -310,7 +310,7 @@ details summary:hover { color: var(--yellow); }
       $("rRunner").innerHTML = '<span class="small">Nesten like bra:</span><a href="https://open.spotify.com/track/' + r.spotify + '" target="_blank" rel="noopener">' + r.title + "</a>";
     } else $("rRunner").innerHTML = "";
     $("rLyrics").hidden = !s.genius;
-    $("rLyrics").innerHTML = s.genius ? '<a href="' + s.genius + '" target="_blank" rel="noopener" aria-label="Les teksten til ' + s.title + ' på Genius">lyrics</a>' : "";
+    $("rLyrics").innerHTML = s.genius ? '<a href="' + s.genius + '" target="_blank" rel="noopener" aria-label="Les teksten til ' + s.title + ' på Genius">Lyrics</a>' : "";
     $("rTrailBox").hidden = !trail || !trail.length;
     $("rTrail").innerHTML = (trail || []).map(function (t) { return "<span>" + t.q + " <b>" + t.a + "</b></span>"; }).join("");
     show("result");
