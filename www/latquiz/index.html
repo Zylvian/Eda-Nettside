@@ -107,15 +107,26 @@ button.mini:hover { color: var(--yellow); border-color: var(--yellow); }
 .facts { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
 .facts b { color: var(--yellow); font-weight: bold; }
 .runner { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
-.lyrics { display: flex; justify-content: flex-end; font-size: 0.85rem; margin-top: -0.75rem; }
-.runner a, .lyrics a { color: var(--fg); text-decoration: underline; text-decoration-color: var(--aqua); text-underline-offset: 3px; }
-.runner a:hover, .lyrics a:hover { color: var(--hot); }
+.lyrics { display: flex; justify-content: flex-end; margin-top: -0.9rem; }
+.lyrics a { font-size: 0.75rem; padding: 0.3rem 0.65rem; border: 1px solid rgba(240, 255, 255, 0.3); border-radius: 4px; color: var(--muted); text-decoration: none; }
+.lyrics a:hover { color: var(--yellow); border-color: var(--yellow); }
+.runner a { color: var(--fg); text-decoration: underline; text-decoration-color: var(--aqua); text-underline-offset: 3px; }
+.runner a:hover { color: var(--hot); }
 .trail { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.8rem; color: var(--muted); }
 .trail b { color: var(--fg); font-weight: normal; }
 details summary { cursor: pointer; color: var(--muted); font-size: 0.85rem; }
 details summary:hover { color: var(--yellow); }
 .view { display: flex; flex-direction: column; gap: 1.5rem; animation: rise 220ms ease-out; }
 @keyframes rise { from { transform: translateY(6px); opacity: 0.4; } to { transform: none; opacity: 1; } }
+/* small phones: keep "Nesten like bra" and the lyrics link on the first screen */
+@media (max-width: 480px) {
+  .wrap { padding-block: 1.25rem 2rem; gap: 1rem; }
+  .view { gap: 1rem; }
+  #result > .panel, #rLyrics { order: 1; }
+  #rTrailBox { order: 2; }
+  #again { order: 3; }
+  .lyrics { margin-top: -0.5rem; }
+}
 @media (prefers-reduced-motion: reduce) { .view { animation: none; } button, .btn { transition: none; } }
 </style>
 </head>
@@ -167,8 +178,8 @@ details summary:hover { color: var(--yellow); }
       <div class="meters" id="rMeters"></div>
       <div class="facts" id="rFacts"></div>
     </div>
+    <div class="lyrics" id="rLyrics"></div>
     <div class="runner" id="rRunner"></div>
-    <p class="lyrics" id="rLyrics"></p>
     <details id="rTrailBox">
       <summary>Dine svar</summary>
       <div class="trail" id="rTrail"></div>
@@ -287,7 +298,7 @@ details summary:hover { color: var(--yellow); }
       $("rRunner").innerHTML = '<span class="small">Nesten like bra:</span><a href="https://open.spotify.com/track/' + r.spotify + '" target="_blank" rel="noopener">' + r.title + "</a>";
     } else $("rRunner").innerHTML = "";
     $("rLyrics").hidden = !s.genius;
-    $("rLyrics").innerHTML = s.genius ? '<a href="' + s.genius + '" target="_blank" rel="noopener">Les teksten til ' + s.title + " på Genius</a>" : "";
+    $("rLyrics").innerHTML = s.genius ? '<a href="' + s.genius + '" target="_blank" rel="noopener" aria-label="Les teksten til ' + s.title + ' på Genius">lyrics</a>' : "";
     $("rTrailBox").hidden = !trail || !trail.length;
     $("rTrail").innerHTML = (trail || []).map(function (t) { return "<span>" + t.q + " <b>" + t.a + "</b></span>"; }).join("");
     show("result");
