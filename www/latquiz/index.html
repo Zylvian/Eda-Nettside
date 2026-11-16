@@ -64,8 +64,8 @@ p { margin: 0; }
 .panel {
   background: var(--purple);
   border-radius: 6px;
-  padding: 1.1rem 1rem;
-  display: flex; flex-direction: column; gap: 0.6rem;
+  padding: 1.4rem 1.25rem;
+  display: flex; flex-direction: column; gap: 0.75rem;
 }
 .answers { display: grid; gap: 0.75rem; }
 button, .btn {
@@ -99,15 +99,16 @@ button.mini:hover { color: var(--yellow); border-color: var(--yellow); }
 .result-title { font-size: clamp(2rem, 9vw, 3.2rem); line-height: 1.05; color: var(--yellow); }
 .feat { color: var(--muted); }
 .why { font-size: 1.05rem; }
-.meters { display: grid; gap: 0.7rem; }
+.meters { display: grid; gap: 0.9rem; }
 .meter { display: grid; grid-template-columns: 7.5rem 1fr; align-items: center; gap: 0.75rem; font-size: 0.85rem; }
 .meter .bar { height: 10px; border-radius: 10px; background: rgba(240, 255, 255, 0.12); position: relative; overflow: hidden; }
 .meter .bar i { position: absolute; inset: 0 auto 0 0; background: var(--aqua); border-radius: 10px; }
 .meter .ends { grid-column: 2; display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--muted); margin-top: -0.4rem; }
-.facts { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
-.facts b { color: var(--yellow); font-weight: bold; }
+.bpm, .themes { font-size: 0.85rem; }
+.bpm { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bpm b { color: var(--yellow); font-weight: bold; }
 .runner { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
-.panel-foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.6rem 0.75rem; margin-top: 0.4rem; }
+.panel-foot { display: flex; align-items: center; flex-wrap: wrap; gap: 0.6rem 1.25rem; margin-top: 0.4rem; }
 .lyrics { display: flex; margin-left: auto; }
 .lyrics a { font-size: 0.75rem; padding: 0.3rem 0.65rem; border: 1px solid rgba(240, 255, 255, 0.4); border-radius: 4px; color: var(--fg); text-decoration: none; }
 .lyrics a:hover { color: var(--yellow); border-color: var(--yellow); }
@@ -124,6 +125,10 @@ details summary:hover { color: var(--yellow); }
   .wrap { padding-block: 1.25rem 2rem; gap: 1rem; }
   .view { gap: 1rem; }
   #result > .panel { order: 1; }
+  .panel-foot { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "themes themes" "bpm lyrics"; gap: 0.75rem 0.75rem; }
+  .themes { grid-area: themes; }
+  .bpm { grid-area: bpm; align-self: center; }
+  .lyrics { grid-area: lyrics; margin-left: 0; }
   #rTrailBox { order: 2; }
   #again { order: 3; }
 }
@@ -177,7 +182,8 @@ details summary:hover { color: var(--yellow); }
     <div class="panel">
       <div class="meters" id="rMeters"></div>
       <div class="panel-foot">
-        <div class="facts" id="rFacts"></div>
+        <span class="bpm" id="rBpm"></span>
+        <span class="themes" id="rThemes"></span>
         <div class="lyrics" id="rLyrics"></div>
       </div>
     </div>
@@ -297,13 +303,14 @@ details summary:hover { color: var(--yellow); }
       meter("Lyd", s.v.energy, "rolig", "full guffe") +
       meter("Tekst", s.v.mood, "trist", "glad") +
       meter("Tempo", s.v.tempo, "rolig", "rask");
-    $("rFacts").innerHTML = "<span><b>" + s.bpm + "</b> BPM</span><span>" + s.themes.slice(0, 3).join(" · ") + "</span>";
+    $("rBpm").innerHTML = "<b>" + s.bpm + "</b> BPM";
+    $("rThemes").textContent = s.themes.slice(0, 3).join(" · ");
     if (runnerId) {
       var r = byId[runnerId];
       $("rRunner").innerHTML = '<span class="small">Nesten like bra:</span><a href="https://open.spotify.com/track/' + r.spotify + '" target="_blank" rel="noopener">' + r.title + "</a>";
     } else $("rRunner").innerHTML = "";
     $("rLyrics").hidden = !s.genius;
-    $("rLyrics").innerHTML = s.genius ? '<a href="' + s.genius + '" target="_blank" rel="noopener" aria-label="Les teksten til ' + s.title + ' på Genius">lyrics</a>' : "";
+    $("rLyrics").innerHTML = s.genius ? '<a href="' + s.genius + '" target="_blank" rel="noopener" aria-label="Les teksten til ' + s.title + ' på Genius">Lyrics</a>' : "";
     $("rTrailBox").hidden = !trail || !trail.length;
     $("rTrail").innerHTML = (trail || []).map(function (t) { return "<span>" + t.q + " <b>" + t.a + "</b></span>"; }).join("");
     show("result");
