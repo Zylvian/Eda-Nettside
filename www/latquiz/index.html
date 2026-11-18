@@ -293,41 +293,42 @@ button.share { text-align: center; margin-top: -0.75rem; }
     c.fillStyle = g; c.fillRect(0, 0, SHARE_W, SHARE_H);
     c.textAlign = "center"; c.textBaseline = "alphabetic";
     // logo (falls back to the wordmark)
-    if (logo) { var lw = 230, lh = lw * logo.height / logo.width; c.drawImage(logo, cx - lw / 2, 230, lw, lh); }
-    else { c.fillStyle = "#F0FFFF"; c.font = "bold 72px " + MONO; c.fillText("E.D.A", cx, 330); }
-    c.fillStyle = "#ECE100"; roundRect(c, padX, 405, SHARE_W - 2 * padX, 5, 2); c.fill();
-    c.fillStyle = "#9FB8BD"; c.font = "38px " + MONO; c.fillText("Låten min i dag er", cx, 478);
+    if (logo) { var lw = 230, lh = lw * logo.height / logo.width; c.drawImage(logo, cx - lw / 2, 205, lw, lh); }
+    else { c.fillStyle = "#F0FFFF"; c.font = "bold 72px " + MONO; c.fillText("E.D.A", cx, 300); }
+    c.fillStyle = "#ECE100"; roundRect(c, padX, 365, SHARE_W - 2 * padX, 5, 2); c.fill();
+    c.fillStyle = "#9FB8BD"; c.font = "38px " + MONO; c.fillText("Låten min i dag er", cx, 432);
     // cover
-    var cs = 560, cxl = cx - cs / 2, cy = 515;
+    var cs = 500, cxl = cx - cs / 2, cy = 465;
     c.save(); c.shadowColor = "rgba(0,0,0,0.45)"; c.shadowBlur = 40; c.shadowOffsetY = 14;
     c.fillStyle = "#3A1366"; roundRect(c, cxl, cy, cs, cs, 22); c.fill(); c.restore();
     if (cover) { c.save(); roundRect(c, cxl, cy, cs, cs, 22); c.clip(); c.drawImage(cover, cxl, cy, cs, cs); c.restore(); }
     // title, shrunk to fit
     var size = 92; c.font = "bold " + size + "px " + MONO;
     while (c.measureText(s.title).width > SHARE_W - 2 * padX && size > 44) { size -= 4; c.font = "bold " + size + "px " + MONO; }
-    c.fillStyle = "#ECE100"; c.fillText(s.title, cx, 1175);
-    c.fillStyle = "#9FB8BD"; c.font = "36px " + MONO; c.fillText(s.feat ? "feat. " + s.feat : "E.D.A", cx, 1228);
+    c.fillStyle = "#ECE100"; c.fillText(s.title, cx, 1062);
+    c.fillStyle = "#9FB8BD"; c.font = "36px " + MONO; c.fillText(s.feat ? "feat. " + s.feat : "E.D.A", cx, 1112);
     // why text
-    c.fillStyle = "#F0FFFF"; c.font = "36px " + MONO;
-    wrapLines(c, s.why, SHARE_W - 2 * padX, 3).forEach(function (l, i) { c.fillText(l, cx, 1300 + i * 48); });
+    c.fillStyle = "#F0FFFF"; c.font = "34px " + MONO;
+    wrapLines(c, s.why, SHARE_W - 2 * padX, 3).forEach(function (l, i) { c.fillText(l, cx, 1180 + i * 45); });
     // purple box with meters
-    var bx = padX, by = 1440, bw = SHARE_W - 2 * padX, bh = 290;
+    var bx = padX, by = 1335, bw = SHARE_W - 2 * padX, bh = 250;
     c.fillStyle = "#3A1366"; roundRect(c, bx, by, bw, bh, 16); c.fill();
     c.textAlign = "left";
     [["Lyd", s.v.energy], ["Tekst", s.v.mood], ["Tempo", s.v.tempo]].forEach(function (m, i) {
-      var y = by + 62 + i * 62;
+      var y = by + 52 + i * 54;
       c.fillStyle = "#F0FFFF"; c.font = "32px " + MONO; c.fillText(m[0], bx + 40, y + 10);
       var tx = bx + 230, tw = bw - 230 - 40;
       c.fillStyle = "rgba(240,255,255,0.14)"; roundRect(c, tx, y - 9, tw, 18, 9); c.fill();
       c.fillStyle = "#00FFFF"; roundRect(c, tx, y - 9, Math.max(18, tw * Math.max(0, Math.min(1, m[1]))), 18, 9); c.fill();
     });
-    c.font = "bold 32px " + MONO; c.fillStyle = "#ECE100"; var bpmTxt = String(s.bpm);
-    c.fillText(bpmTxt, bx + 40, by + bh - 34);
-    var bw1 = c.measureText(bpmTxt).width; c.font = "32px " + MONO; c.fillStyle = "#F0FFFF";
-    c.fillText(" BPM   " + s.themes.slice(0, 3).join(" · "), bx + 40 + bw1, by + bh - 34);
+    var bpmTxt = String(s.bpm), rest = " BPM   " + s.themes.slice(0, 3).join(" · "), fs = 32, avail = bw - 80;
+    while (fs > 22) { c.font = "bold " + fs + "px " + MONO; var w1 = c.measureText(bpmTxt).width; c.font = fs + "px " + MONO; if (w1 + c.measureText(rest).width <= avail) break; fs -= 2; }
+    c.font = "bold " + fs + "px " + MONO; c.fillStyle = "#ECE100"; c.fillText(bpmTxt, bx + 40, by + bh - 30);
+    var bw1 = c.measureText(bpmTxt).width; c.font = fs + "px " + MONO; c.fillStyle = "#F0FFFF";
+    c.fillText(rest, bx + 40 + bw1, by + bh - 30);
     // footer
-    c.textAlign = "center"; c.fillStyle = "#F0FFFF"; c.font = "34px " + MONO; c.fillText("Hvilken E.D.A-låt er du?", cx, 1800);
-    c.fillStyle = "#ECE100"; c.font = "bold 40px " + MONO; c.fillText("edamusic.no/latquiz", cx, 1856);
+    c.textAlign = "center"; c.fillStyle = "#F0FFFF"; c.font = "34px " + MONO; c.fillText("Hvilken E.D.A-låt er du?", cx, 1640);
+    c.fillStyle = "#ECE100"; c.font = "bold 40px " + MONO; c.fillText("edamusic.no/latquiz", cx, 1694);
     return cv;
   }
   function prepareShare(s) {
